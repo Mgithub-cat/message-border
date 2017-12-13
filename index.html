@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	<section class="a">
+		 <input type="text" class="t">
+		 <textarea name="" id="" cols="20" rows="10" class="tt" maxlength="100"></textarea>
+		 <p>
+		 	已输入<span>0</span>个字，还可以输入<span>100</span>个字
+		 </p>
+		 <button>发表</button>
+	</section>
+	<section class="b">
+	</section>
+</body>
+</html>
+<script>
+	let sec = document.querySelector('.b');
+	function prepend(parentNode,child){
+	    let firstChild = parentNode.firstElementChild;
+	    if(firstChild){
+	        parentNode.insertBefore(child,firstChild);
+	    }else{
+	        parentNode.appendChild(child);
+	    }
+	}
+	window.onload = function(){
+		let span = document.getElementsByTagName('span');
+		let t = document.querySelector('.t');
+		let text = document.querySelector('.tt');
+		text.onkeyup = function(){
+			let st = this.value.length;
+			span[0].innerText = st;
+			span[1].innerText = 100 - st;
+		}
+		text.onkeydown = function(e){
+			if(e.keyCode == 13){
+				let neww = document.createElement('div');
+				console.log(neww);
+				prepend(sec,neww);
+				neww.innerText = t.value + '发表了：' + '\n' + this.value;
+				this.value = null;
+			}
+		}
+	}
+	/*提交
+	上：内容清空
+	下：插入value*/
+</script>
