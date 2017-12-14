@@ -40,7 +40,6 @@
 		text.onkeydown = function(e){
 			if(e.keyCode == 13){
 				let neww = document.createElement('div');
-				console.log(neww);
 				prepend(sec,neww);
 				neww.innerText = t.value + '发表了：' + '\n' + this.value;
 				this.value = null;
